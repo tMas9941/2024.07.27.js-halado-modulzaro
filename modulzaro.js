@@ -271,7 +271,7 @@ const products = document.getElementById("products");
 const render = (array) => {
 	array.forEach((product) => {
 		products.insertAdjacentHTML(
-			"afterend",
+			"beforeend",
 			`<div class="product-card" data-product-category="${product.category}">
     <img class="product-img" src=${product.image}>
     <div class="product-details">
