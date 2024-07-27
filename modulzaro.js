@@ -363,13 +363,22 @@ const connectCardsToButtonEvents = () => {
 const renderActiveCards = () => {
 	const productCards = [...document.getElementsByClassName("product-card")];
 	const activeCategories = [...document.querySelectorAll(".category-btn.active")].map((button) => button.innerText);
-	productCards.forEach((card) => {
-		if (activeCategories.includes(card.getAttribute("data-product-category"))) {
+
+	if (activeCategories.length > 0) {
+		// megjeleníti az aktív kártyákat jeleníti meg
+		productCards.forEach((card) => {
+			if (activeCategories.includes(card.getAttribute("data-product-category"))) {
+				card.style.display = "block";
+			} else {
+				card.style.display = "none";
+			}
+		});
+	} else {
+		// megjeleníti az összes kártyát
+		productCards.forEach((card) => {
 			card.style.display = "block";
-		} else {
-			card.style.display = "none";
-		}
-	});
+		});
+	}
 };
 
 connectCardsToButtonEvents();
